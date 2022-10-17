@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 def get_products():
     '''
-    lods the data from the csv file and prints the first 5 entries
+    laods the data from the csv file and prints the first 5 entries
     '''
     products = pd.read_csv("Products.csv", lineterminator="\n",index_col= 0)
     print(products.head())
