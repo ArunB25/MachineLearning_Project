@@ -40,6 +40,8 @@ def remove_missing_values(products):
     products_copy= products_copy[products_copy['product_description'].astype(str).str.contains('[A-Za-z]')]
     products_copy = products_copy[products_copy['location'] != '']
     products_copy = products_copy[products_copy['location'].astype(str).str.contains('[A-Za-z]')]
+    products_copy = products_copy[products_copy['product_name'] != '']
+    products_copy = products_copy[products_copy['product_name'].astype(str).str.contains('[A-Za-z]')]
     print(products_copy.info())
 
     return(products_copy)
@@ -48,5 +50,6 @@ if __name__ == '__main__':
     products = get_products()
     products = format_datatypes(products)
     products = remove_missing_values(products)
+    products.to_csv('Products_formated.csv')
     
    
