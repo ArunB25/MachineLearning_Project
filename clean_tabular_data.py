@@ -19,8 +19,10 @@ def format_datatypes(products):
     products['price'] = products['price'].str.replace('£','')
     products['price'] = products['price'].str.replace(',','')
     products['price'] = products['price'].astype('float64')
-    products['page_id'] = products['page_id'].astype('int64')
+    products['page_id'] = products['page_id'].astype('object')
     products['create_time'] = products['create_time'].astype('datetime64[ns]')
+    products['category'] = products['category'].str.replace(" ", "")
+    products.rename(columns={'id':'product_id'}, inplace=True)
     # print(products.info())
     # with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     #     print(products.head())
