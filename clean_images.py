@@ -22,13 +22,13 @@ if __name__ == '__main__':
     path = "images/"
     dirs = os.listdir(path)
     dirs.sort()
-    final_size = 512
+    final_size = 256
     for item in dirs:
         try:
             im = Image.open('images/' + item)
             new_im = resize_image(final_size, im)
-            item_name = item.replace('.', '')
-            new_im.save(f'formated_images/{item_name}_resized.jpg')
+            
+            new_im.save(f'formated_images/{item}')
             #new_im.show()
             #print(f"image: {item} Formatted")
         except:
