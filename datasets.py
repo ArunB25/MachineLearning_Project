@@ -31,7 +31,7 @@ class img_dataset(Dataset):
                     #self.image_labels['product_id']
                     self.image_labels = self.image_labels[self.image_labels.product_id != product_id_no_image]
 
-    def __getitem__(self,idx):
+    def __getitem__(self,idx,rtn_float = True):
         '''
         idx: image index
         gets item idx in image_labels and returns the image as a a tensor and the corresponding label
@@ -43,7 +43,10 @@ class img_dataset(Dataset):
         except:
             print("ERROR GETTING ITEMS | image path ", img_path,"Labels",label) 
 
-        return image.float(), label
+        if rtn_float:
+            return image.float(), label
+        else:
+            return image, label
 
     def __len__(self):
         return len(self.image_labels)

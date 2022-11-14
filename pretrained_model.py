@@ -1,4 +1,4 @@
-import datasets
+import datasets as Dataset
 from torch.utils.data import DataLoader
 import torch
 from torch.utils.tensorboard import SummaryWriter
@@ -81,7 +81,7 @@ def evaluate(model, dataloader):
 
 
 if __name__ == '__main__':
-    dataset = datasets.img_dataset()
+    dataset = Dataset.img_dataset()
     train_size = int(0.7 * len(dataset))
     val_size = int(0.15 * len(dataset))
     test_size = len(dataset) - train_size - val_size
