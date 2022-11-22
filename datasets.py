@@ -7,6 +7,7 @@ from torchvision import transforms
 import os
 import pandas as pd
 from PIL import Image
+import json
 
 
 class img_dataset(Dataset):
@@ -14,8 +15,8 @@ class img_dataset(Dataset):
         super().__init__()
         product_labels = pd.read_csv(annotations_file, lineterminator="\n", usecols = ['product_id','category']) #import image id and category
         product_labels['category'] = product_labels['category'].str.split(pat="/").str[0] #split categories to retian highest one
-        self.labels_dict = dict(enumerate(product_labels['category'].value_counts().index.tolist())) #create dictionary of categories
-        #print(self.labels_dict)
+        #self.labels_dict = dict(enumerate(product_labels['category'].value_counts().index.tolist())) #load dictionary of categories
+        self.labels_dict = json.load("categories_disct.json")
         product_labels['category'] = product_labels['category'].replace(list(self.labels_dict.values()),list(self.labels_dict.keys())) # replace categories with integer value7
         self.image_labels = pd.read_csv(images_file, lineterminator="\n", usecols = ['id','product_id']) #import image id and category
         self.image_labels['category'] = [product_labels.loc[product_labels['product_id'] == x, 'category'].iloc[0] for x in self.image_labels['product_id']] #for each image get its product category value
