@@ -36,3 +36,8 @@ The training accuracy curve below shows a trend almost like a mirror image of th
 To ensure the model isnt overfitting the validation loss was also plotted and displayed a trend of exponetial decay, which assured the model wasnt over fitting.
 
 ![image](https://user-images.githubusercontent.com/111798251/201907879-11375486-6cb8-443d-b478-e6e78c151d03.png)
+
+## Deploying the Model via API
+Using FastAPI the models API was created. The UploadFile class that comes with FastAPI makes it simple to upload an image, which inturn gets pass through the model and returns the category with the highest probability and a dictionary of all the categories with the probabilities. This API along with the models state dict was built into a docker image, which was deployed on an AWS AC2 instance. Below is a screen shot of the API being tested via the docs on my local computer. 
+
+![image](https://user-images.githubusercontent.com/111798251/203319191-52286d29-efb1-40ce-a7c8-529d59094f40.png)
