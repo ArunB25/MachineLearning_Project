@@ -84,12 +84,15 @@ except:
 app = FastAPI()
 print("Starting server")
 
+@app.get("/")
+async def root():
+    return {"Uvicorn": "I'm alive"}
+
 @app.get('/healthcheck')
 def healthcheck():
   msg = "API is up and running!"
   
   return {"message": msg}
-
 
   
 @app.post('/predict/image')
@@ -104,5 +107,5 @@ def predict_image(image: UploadFile = File(...)):
     })
     
     
-if __name__ == '__main__':
-  uvicorn.run("api:app", host="0.0.0.0", port=8080)
+# if __name__ == '__main__':
+#   uvicorn.run("api:app", host="0.0.0.0  ", port=80)

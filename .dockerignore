@@ -1,0 +1,17 @@
+.gitignore
+clean_images.py
+clean_tabular_data.py
+custom_model.py
+datasets.py
+image_processor.py
+images.csv
+pretrained_model.py
+price_estimation_using_text.py
+Products_formated.csv
+Products.csv
+README.md 
+test_api.py
+images/
+formated_images/
+runs/
+models/
