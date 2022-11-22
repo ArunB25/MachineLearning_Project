@@ -43,11 +43,11 @@ class ImageClassifier(nn.Module):
             output = self.model(input_batch) # Tensor of shape 1000, with confidence scores over Imagenet's 1000 classes
 
         output = output.squeeze()
-        print(output)
         category_probs = {}
         for idx, probability in enumerate(output):
             category_probs.update({f"{categories[str(idx)]}":round(probability.item(),4)})
 
+        print(category_probs)
         return category_probs
 
 
